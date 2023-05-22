@@ -49,10 +49,9 @@ const appData = {
     {
       name: "Kansas City, MO",
       state: "Missouri",
-      title: "Kansas City, MO",
+      title: "KANSAS CITY, MO",
       coordinates: [-94.578331, 39.099724],
-      description:
-        "Our Route Zero Relay team will be holding a press event and rally in Kansas City, MO in May with advocates, community members and elected leaders like Kansas City, MO’s Mayor Quinton Lucas!",
+      description: "Ride KC E-Bikeshare Program",
       vimeoVideo: "",
       youtubeVideo: "",
       image: KCLogo,

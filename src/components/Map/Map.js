@@ -13,66 +13,9 @@ const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-states/us-albers.json";
 
 export default function Map() {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const openImageViewer = (index) => {
-    setCurrentImage(index);
-    setIsViewerOpen(true);
-  };
-  const closeImageViewer = () => {
-    setCurrentImage(0);
-    setIsMarkerClicked("");
-  };
-  const toggleShowImages = () => {
-    setShowImages(!showImages);
-  };
   const isMobile = document.documentElement.clientWidth <= 415;
 
-  const [showImages, setShowImages] = useState(false);
-
   const [hoveredState, setHoveredState] = useState("");
-
-  const coordinatedData = [
-    {
-      coordinates: [-94.578331, 39.099724],
-      state: "Missouri",
-    },
-  ];
-  const coordinatedDataStates = [
-    {
-      name: "Pennsylvania",
-    },
-    {
-      name: "Maryland",
-    },
-    {
-      name: "District of Columbia",
-    },
-    {
-      name: "Michigan",
-    },
-    {
-      name: "California",
-    },
-    {
-      name: "Arizona",
-    },
-    {
-      name: "New Mexico",
-    },
-    {
-      name: "Kansas",
-    },
-    {
-      name: "Missouri",
-    },
-    {
-      name: "Ohio",
-    },
-    {
-      name: "Illinois",
-    },
-  ];
   const [isMarkerClicked, setIsMarkerClicked] = useState("");
   const handleStateLeave = () => {
     setHoveredState("");
@@ -92,12 +35,12 @@ export default function Map() {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => {
-                const state = geo.properties.name;
-                const IsMain = coordinatedDataStates.some((data) => {
-                  return "Missouri" === state;
+                const geostate = geo.properties.name;
+                const IsMain = appData.pointsData.some((data) => {
+                  return "Missouri" === geostate;
                 });
-                const isHighlighted = coordinatedDataStates.some((data) => {
-                  return data.name === state;
+                const isHighlighted = appData.pointsData.some((data, index) => {
+                  return appData.pointsData[index].state === geostate;
                 });
 
                 return (
@@ -156,50 +99,68 @@ export default function Map() {
         </ComposableMap>
 
         {hoveredState !== "" ? (
-          <CityInfoCard
-            state={hoveredState}
-            // gallery={() => {
-            //   // setIsMarkerClicked(hoveredState);
-            //   // console.log(hoveredState + "clicked");
-            // }}
-          />
+          <CityInfoCard state={hoveredState} />
         ) : (
           <div></div>
         )}
       </div>
       {isMobile && (
         <>
-          <div className="mobiletoshowLogo">
-            <div className="card-container d-flex flex-wrap">
-              {
-                <div className="card myclass">
-                  <img
+          <div className="card-container ">
+            {
+              <div
+                className="card"
+                style={{
+                  padding: "10px",
+                  margin: "10px",
+                  border: "1px solid grey",
+                  borderRadius: "10px!important",
+                }}
+              >
+                {/* <img
                     className="card-img-top"
                     src={appData.pointsData[4].image}
                     alt="carddetail"
-                  />
-                  <div className="card-body">
-                    <h5
-                      className="card-title customcardtitle redColor"
-                      style={{ fontWeight: "bold" }}
-                    >
-                      <span style={{ color: "#161e44" }}>
-                        {" "}
-                        {appData.pointsData[4].title.substring(0, 12)}
-                      </span>
-                      <span style={{ color: "#161e44" }}>
-                        {" "}
-                        {appData.pointsData[4].title.substring(13, 15)}
-                      </span>
-                    </h5>
+                  /> */}
+                <div className="card-body">
+                  <h5
+                    className="card-title customcardtitle redColor"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    <span style={{ color: "#161e44" }}>
+                      {" "}
+                      {appData.pointsData[4].title.substring(0, 12)}
+                    </span>
+                    <span style={{ color: "#161e44" }}>
+                      {" "}
+                      {appData.pointsData[4].title.substring(13, 15)}
+                    </span>
+                  </h5>
 
-                    <p className="card-text customcardtext">
-                      {appData.pointsData[4].description}
-                    </p>
-                  </div>
+                  <p className="card-text customcardtext">
+                    {appData.pointsData[4].description}
+                  </p>
+                  <a
+                    href="https://www.chargingusforward.com/kc-ride"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button
+                      style={{
+                        width: "100%",
+                        backgroundColor: "#161e44",
+                        height: "28px",
+                        color: "white",
+                        fontSize: "11px",
+                        border: "solid grey",
+                      }}
+                    >
+                      Learn More
+                    </button>
+                  </a>
                 </div>
-              }
-            </div>
+              </div>
+            }
           </div>
         </>
       )}
