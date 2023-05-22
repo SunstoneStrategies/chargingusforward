@@ -71,31 +71,34 @@ export default function Map() {
               })
             }
           </Geographies>
-
-          <Marker
-            key={appData.pointsData[4].state}
-            coordinates={appData.pointsData[4].coordinates}
-            onMouseEnter={() => {
-              console.log(appData.pointsData[4].state);
-              if (!isMobile) {
-                setHoveredState(appData.pointsData[4].state);
-              }
-            }}
-          >
-            <g transform="translate(-12, -22) scale(1.2)">
-              <circle cx="12" cy="10" r="2" fill="white" />
-              <path
-                d="M12 24.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 14.7z"
-                fill="yellow"
-                stroke="white"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="12" cy="10" r="4" fill="yellow" />
-              <circle cx="12" cy="10" r="2" fill="white" />
-            </g>
-          </Marker>
+          {appData.pointsData &&
+            appData.pointsData.map(({ state, coordinates }, index) => (
+              <Marker
+                key={index} // Use index as the key for each Marker
+                coordinates={coordinates}
+                onMouseEnter={() => {
+                  console.log(state);
+                  if (!isMobile) {
+                    console.log(state);
+                    setHoveredState(state);
+                  }
+                }}
+              >
+                <g transform="translate(-12, -22) scale(1.2)">
+                  <circle cx="12" cy="10" r="2" fill="white" />
+                  <path
+                    d="M12 24.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 14.7z"
+                    fill="yellow"
+                    stroke="white"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="12" cy="10" r="4" fill="yellow" />
+                  <circle cx="12" cy="10" r="2" fill="white" />
+                </g>
+              </Marker>
+            ))}
         </ComposableMap>
 
         {hoveredState !== "" ? (
@@ -129,16 +132,16 @@ export default function Map() {
                   >
                     <span style={{ color: "#161e44" }}>
                       {" "}
-                      {appData.pointsData[4].title.substring(0, 12)}
+                      {appData.pointsData[0].title.substring(0, 12)}
                     </span>
                     <span style={{ color: "#161e44" }}>
                       {" "}
-                      {appData.pointsData[4].title.substring(13, 15)}
+                      {appData.pointsData[0].title.substring(13, 15)}
                     </span>
                   </h5>
 
                   <p className="card-text customcardtext">
-                    {appData.pointsData[4].description}
+                    {appData.pointsData[0].description}
                   </p>
                   <a
                     href="https://www.chargingusforward.com/kc-ride"

@@ -32,15 +32,15 @@ export default function CityInfoCard(props) {
             >
               <span style={{ color: "#161e44" }}>
                 {" "}
-                {appData.pointsData[4].title.substring(0, 12)}
+                {appData.pointsData[0].title.substring(0, 12)}
               </span>
               <span style={{ color: "#161e44" }}>
                 {" "}
-                {appData.pointsData[4].title.substring(13, 15)}
+                {appData.pointsData[0].title.substring(13, 15)}
               </span>
             </h5>
             <p className="card-text" style={{ fontSize: "12px" }}>
-              {appData.pointsData[4].description}
+              {appData.pointsData[0].description}
             </p>
             <a
               href="https://www.chargingusforward.com/kc-ride"
