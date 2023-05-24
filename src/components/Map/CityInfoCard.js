@@ -3,10 +3,11 @@ import "./style.css";
 
 import appData from "./appData";
 export default function CityInfoCard(props) {
+  const videoUrlMissouri = appData.pointsData[0].vimeoVideo;
   return props.state === "Missouri" ? (
     <div
       className="card-container d-flex flex-wrap"
-      style={{ position: "absolute", transform: "translate( 17%, -78%)" }}
+      style={{ position: "absolute", transform: "translate( 12%, -58%)" }}
     >
       {
         <div
@@ -14,17 +15,43 @@ export default function CityInfoCard(props) {
           style={{
             flex: "0 0 auto",
             margin: "10px",
-            maxWidth: "300px",
+            maxWidth: "320px",
             padding: "10px",
             borderRadius: "20px",
           }}
         >
-          {/* <img
-            className="card-img-top"
-            src={appData.pointsData[4].image}
-            alt="carddetail"
-            height="170px"
-          /> */}
+          {appData.pointsData[0].image !== "" ? (
+            <img
+              className="card-img-top"
+              src={appData.pointsData[0].image}
+              alt="carddetail"
+              height="150px"
+            />
+          ) : appData.pointsData[0].vimeoVideo !== "" ? (
+            videoUrlMissouri && (
+              <iframe
+                src={appData.pointsData[0].vimeoVideo}
+                width="300"
+                height="190px"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title={appData.pointsData[0].title}
+              ></iframe>
+            )
+          ) : appData.pointsData[0].youtubeVideo !== "" ? (
+            <iframe
+              src={appData.pointsData[0].youtubeVideo}
+              maxWidth="300px"
+              height="190px"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="LA"
+            ></iframe>
+          ) : (
+            <></>
+          )}
           <div className="card-body">
             <h5
               className="card-title"

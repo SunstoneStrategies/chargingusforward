@@ -16,7 +16,7 @@ export default function Map() {
   const isMobile = document.documentElement.clientWidth <= 415;
 
   const [hoveredState, setHoveredState] = useState("");
-  const [isMarkerClicked, setIsMarkerClicked] = useState("");
+  // const [isMarkerClicked, setIsMarkerClicked] = useState("");
   const handleStateLeave = () => {
     setHoveredState("");
   };
@@ -107,66 +107,92 @@ export default function Map() {
           <div></div>
         )}
       </div>
-      {isMobile && (
-        <>
-          <div className="card-container ">
-            {
-              <div
-                className="card"
-                style={{
-                  padding: "10px",
-                  margin: "10px",
-                  border: "1px solid grey",
-                  borderRadius: "10px!important",
-                }}
-              >
-                {/* <img
-                    className="card-img-top"
-                    src={appData.pointsData[4].image}
-                    alt="carddetail"
-                  /> */}
-                <div className="card-body">
-                  <h5
-                    className="card-title customcardtitle redColor"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    <span style={{ color: "#161e44" }}>
-                      {" "}
-                      {appData.pointsData[0].title.substring(0, 12)}
-                    </span>
-                    <span style={{ color: "#161e44" }}>
-                      {" "}
-                      {appData.pointsData[0].title.substring(13, 15)}
-                    </span>
-                  </h5>
-
-                  <p className="card-text customcardtext">
-                    {appData.pointsData[0].description}
-                  </p>
-                  <a
-                    href="https://www.chargingusforward.com/kc-ride"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button
-                      style={{
-                        width: "100%",
-                        backgroundColor: "#161e44",
-                        height: "28px",
-                        color: "white",
-                        fontSize: "11px",
-                        border: "solid grey",
-                      }}
+      {isMobile &&
+        appData.pointsData &&
+        appData.pointsData.map((point, index) => (
+          <React.Fragment key={index}>
+            <div className="card-container ">
+              {
+                <div
+                  className="card"
+                  style={{
+                    padding: "10px",
+                    margin: "10px",
+                    border: "1px solid grey",
+                    borderRadius: "10px!important",
+                  }}
+                >
+                  {point.image !== "" ? (
+                    <img
+                      className="card-img-top"
+                      src={point.image}
+                      alt="carddetail"
+                      height="150px"
+                    />
+                  ) : point.vimeoVideo !== "" ? (
+                    <iframe
+                      src={point.vimeoVideo}
+                      width="300"
+                      height="190px"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={point.title}
+                    ></iframe>
+                  ) : point.youtubeVideo !== "" ? (
+                    <iframe
+                      src={point.vimeoVideo}
+                      style={{ width: "300px", height: "190px" }}
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={point.title}
+                    ></iframe>
+                  ) : (
+                    <></>
+                  )}
+                  <div className="card-body">
+                    <h5
+                      className="card-title customcardtitle redColor"
+                      style={{ fontWeight: "bold" }}
                     >
-                      Learn More
-                    </button>
-                  </a>
+                      <span style={{ color: "#161e44" }}>
+                        {" "}
+                        {point.title.substring(0, 12)}
+                      </span>
+                      <span style={{ color: "#161e44" }}>
+                        {" "}
+                        {point.title.substring(13, 15)}
+                      </span>
+                    </h5>
+
+                    <p className="card-text customcardtext">
+                      {point.description}
+                    </p>
+                    <a
+                      href="https://www.chargingusforward.com/kc-ride"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button
+                        style={{
+                          width: "100%",
+                          backgroundColor: "#161e44",
+                          height: "28px",
+                          color: "white",
+                          fontSize: "11px",
+                          border: "solid grey",
+                        }}
+                      >
+                        Learn More
+                      </button>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            }
-          </div>
-        </>
-      )}
+              }
+            </div>
+          </React.Fragment>
+        ))}
     </>
   ) : (
     <div>Loading...</div>
