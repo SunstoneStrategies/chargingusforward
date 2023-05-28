@@ -132,7 +132,7 @@ export default function Map() {
                   ) : point.vimeoVideo !== "" ? (
                     <iframe
                       src={point.vimeoVideo}
-                      width="300"
+                      width="350px"
                       height="190px"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
@@ -142,7 +142,7 @@ export default function Map() {
                   ) : point.youtubeVideo !== "" ? (
                     <iframe
                       src={point.vimeoVideo}
-                      style={{ width: "300px", height: "190px" }}
+                      style={{ width: "350px", height: "190px" }}
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
                       allowFullScreen

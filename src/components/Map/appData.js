@@ -9,7 +9,7 @@ const appData = {
       coordinates: [-94.578331, 39.099724],
       description: "Ride KC E-Bikeshare Program",
       // Note: You can only add one info between image, vimeoVideo, youtubeVideo.
-      vimeoVideo: "",
+      vimeoVideo: "https://player.vimeo.com/video/830670385?h=9fc0b6f61b",
       youtubeVideo: "",
       // image: KCLogo, sample
       image: "",
