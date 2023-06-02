@@ -7,9 +7,22 @@ const appData = {
       state: "Missouri",
       title: "KANSAS CITY, MO",
       coordinates: [-94.578331, 39.099724],
-      description: "Ride KC E-Bikeshare Program",
+      description: "Kansas City Streetcar E-Bikeshare Program",
       // Note: You can only add one info between image, vimeoVideo, youtubeVideo.
       vimeoVideo: "https://player.vimeo.com/video/830670385?h=9fc0b6f61b",
+      youtubeVideo: "",
+      // image: KCLogo, sample
+      image: "",
+    },
+    {
+      id: 999,
+      name: "Pittsburg",
+      state: "California",
+      title: "Pittsburg",
+      coordinates: [-79.9928601184325, 40.440514432625896],
+      description: `Pittsburg "Community in Charge" Is Coming Soon.`,
+      // Note: You can only add one info between image, vimeoVideo, youtubeVideo.
+      vimeoVideo: "",
       youtubeVideo: "",
       // image: KCLogo, sample
       image: "",

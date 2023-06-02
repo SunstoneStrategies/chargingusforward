@@ -170,7 +170,7 @@ export default function Map() {
                       {point.description}
                     </p>
                     <a
-                      href="https://www.chargingusforward.com/kc-ride"
+                      href="https://www.chargingusforward.com/kansas-city-streetcar"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
