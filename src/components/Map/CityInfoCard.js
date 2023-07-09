@@ -95,7 +95,7 @@ export default function CityInfoCard(props) {
   ) : props.state === "California" ? (
     <div
       className="card-container d-flex flex-wrap"
-      style={{ position: "absolute", transform: "translate( 86%, -105%)" }}
+      style={{ position: "absolute", transform: "translate( 86%, -55%)" }}
     >
       {
         <div
@@ -158,7 +158,7 @@ export default function CityInfoCard(props) {
               {appData.pointsData[1].description}
             </p>
             <a
-              href="https://www.chargingusforward.com/kansas-city-streetcar"
+              href="https://www.chargingusforward.com/pogoh"
               target="_blank"
               rel="noopener noreferrer"
             >

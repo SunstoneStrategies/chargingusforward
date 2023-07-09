@@ -18,11 +18,11 @@ const appData = {
       id: 999,
       name: "Pittsburg",
       state: "California",
-      title: "Pittsburg",
+      title: "Pittsburgh, PA",
       coordinates: [-79.9928601184325, 40.440514432625896],
-      description: `Pittsburg "Community in Charge" Is Coming Soon.`,
+      description: `POGOH`,
       // Note: You can only add one info between image, vimeoVideo, youtubeVideo.
-      vimeoVideo: "",
+      vimeoVideo: "https://player.vimeo.com/video/842673721",
       youtubeVideo: "",
       // image: KCLogo, sample
       image: "",
