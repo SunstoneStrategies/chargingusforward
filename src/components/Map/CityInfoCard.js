@@ -7,7 +7,7 @@ export default function CityInfoCard(props) {
   return props.state === "Missouri" ? (
     <div
       className="card-container d-flex flex-wrap"
-      style={{ position: "absolute", transform: "translate( 12%, -58%)" }}
+      style={{ position: "absolute", transform: "translate( 10%, -55%)" }}
     >
       {
         <div
@@ -95,7 +95,7 @@ export default function CityInfoCard(props) {
   ) : props.state === "California" ? (
     <div
       className="card-container d-flex flex-wrap"
-      style={{ position: "absolute", transform: "translate( 86%, -55%)" }}
+      style={{ position: "absolute", transform: "translate( 74%, -65%)" }}
     >
       {
         <div
@@ -147,12 +147,12 @@ export default function CityInfoCard(props) {
             >
               <span style={{ color: "#161e44" }}>
                 {" "}
-                {appData.pointsData[1].title.substring(0, 12)}
+                {appData.pointsData[1].title}
               </span>
-              <span style={{ color: "#161e44" }}>
+              {/* <span style={{ color: "#161e44" }}>
                 {" "}
-                {appData.pointsData[1].title.substring(13, 15)}
-              </span>
+                {appData.pointsData[1].title}
+              </span> */}
             </h5>
             <p className="card-text" style={{ fontSize: "12px" }}>
               {appData.pointsData[1].description}

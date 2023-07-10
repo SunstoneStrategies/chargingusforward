@@ -29,7 +29,7 @@ export default function Map() {
           projection="geoAlbersUsa"
           style={{ width: "100%" }}
           projectionConfig={{
-            scale: 700,
+            scale: 590,
           }}
         >
           <Geographies geography={geoUrl}>
