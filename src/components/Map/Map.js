@@ -37,7 +37,9 @@ export default function Map() {
               geographies.map((geo) => {
                 const geostate = geo.properties.name;
                 const IsMain = appData.pointsData.some((data) => {
-                  return "Missouri" === geostate;
+                  return (
+                    "Missouri" === geostate || "West Virginia" === geostate
+                  );
                 });
                 const isHighlighted = appData.pointsData.some((data, index) => {
                   return appData.pointsData[index].state === geostate;
