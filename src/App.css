@@ -88,4 +88,8 @@
   }
 
 }
+
+.map-container {
+  margin-top: 80px; /* Adjust the value to increase/decrease the space */
+}
  
