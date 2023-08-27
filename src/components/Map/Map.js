@@ -36,15 +36,15 @@ export default function Map() {
             {({ geographies }) =>
               geographies.map((geo) => {
                 const geostate = geo.properties.name;
-                const IsMain = appData.pointsData.some((data) => {
-                  return (
-                    "Missouri" === geostate || "West Virginia" === geostate
-                  );
-                });
-                const isHighlighted = appData.pointsData.some((data, index) => {
-                  return appData.pointsData[index].state === geostate;
-                });
 
+                const IsMain =
+                  geostate === "Missouri" ||
+                  geostate === "Pennsylvania" ||
+                  geostate === "Colorado";
+
+                const isHighlighted = appData.pointsData.some((data) => {
+                  return data.state.trim() === geostate.trim();
+                });
                 return (
                   <Geography
                     key={geo.rsmKey}
@@ -73,41 +73,41 @@ export default function Map() {
               })
             }
           </Geographies>
+
           {appData.pointsData &&
-            appData.pointsData.map(({ state, coordinates }, index) => (
-              <Marker
-                key={index} // Use index as the key for each Marker
-                coordinates={coordinates}
-                onMouseEnter={() => {
-                  console.log(state);
-                  if (!isMobile) {
+            appData.pointsData.map(({ state, coordinates }, index) => {
+              console.log("state name", state, coordinates);
+              return (
+                <Marker
+                  key={index} // Use index as the key for each Marker
+                  coordinates={coordinates}
+                  onMouseEnter={() => {
                     console.log(state);
-                    setHoveredState(state);
-                  }
-                }}
-              >
-                <g transform="translate(-12, -22) scale(1.2)">
-                  <circle cx="12" cy="10" r="2" fill="white" />
-                  <path
-                    d="M12 24.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 14.7z"
-                    fill="#fcbc0c"
-                    stroke="white"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="12" cy="10" r="4" fill="#fcbc0c" />
-                  <circle cx="12" cy="10" r="2" fill="white" />
-                </g>
-              </Marker>
-            ))}
+                    if (!isMobile) {
+                      console.log(state);
+                      setHoveredState(state);
+                    }
+                  }}
+                >
+                  <g transform="translate(-12, -22) scale(1.2)">
+                    <circle cx="12" cy="10" r="2" fill="white" />
+                    <path
+                      d="M12 24.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 14.7z"
+                      fill="#fcbc0c"
+                      stroke="white"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <circle cx="12" cy="10" r="4" fill="#fcbc0c" />
+                    <circle cx="12" cy="10" r="2" fill="white" />
+                  </g>
+                </Marker>
+              );
+            })}
         </ComposableMap>
 
-        {hoveredState !== "" ? (
-          <CityInfoCard state={hoveredState} />
-        ) : (
-          <div></div>
-        )}
+        {hoveredState !== "" && <CityInfoCard state={hoveredState} />}
       </div>
       {isMobile &&
         appData.pointsData &&
