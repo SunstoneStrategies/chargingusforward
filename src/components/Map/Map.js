@@ -14,8 +14,8 @@ const geoUrl =
 
 export default function Map() {
   const isMobile = document.documentElement.clientWidth <= 415;
-
   const [hoveredState, setHoveredState] = useState("");
+
   // const [isMarkerClicked, setIsMarkerClicked] = useState("");
   const handleStateLeave = () => {
     setHoveredState("");
@@ -46,29 +46,31 @@ export default function Map() {
                   return data.state.trim() === geostate.trim();
                 });
                 return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    fill={
-                      IsMain ? "grey" : isHighlighted ? "#161e44" : "#161e44"
-                    }
-                    stroke="white"
-                    strokeWidth={1}
-                    style={{
-                      default: {
-                        outline: "#0000",
-                      },
-                      hover: {
-                        fill: IsMain
-                          ? "grey"
-                          : isHighlighted
-                          ? "#161e44"
-                          : "#161e44",
-                        outline: "none",
-                      },
-                      pressed: { fill: "#02A" },
-                    }}
-                  />
+                  <>
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      fill={
+                        IsMain ? "grey" : isHighlighted ? "#161e44" : "#161e44"
+                      }
+                      stroke="white"
+                      strokeWidth={1}
+                      style={{
+                        default: {
+                          outline: "#0000",
+                        },
+                        hover: {
+                          fill: IsMain
+                            ? "grey"
+                            : isHighlighted
+                            ? "#161e44"
+                            : "#161e44",
+                          outline: "none",
+                        },
+                        pressed: { fill: "#02A" },
+                      }}
+                    />
+                  </>
                 );
               })
             }
@@ -89,7 +91,10 @@ export default function Map() {
                     }
                   }}
                 >
-                  <g transform="translate(-12, -22) scale(1.2)">
+                  <g
+                    style={{ position: "absolute" }}
+                    transform="translate(-12, -22) scale(1.2)"
+                  >
                     <circle cx="12" cy="10" r="2" fill="white" />
                     <path
                       d="M12 24.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 14.7z"
@@ -106,8 +111,7 @@ export default function Map() {
               );
             })}
         </ComposableMap>
-
-        {hoveredState !== "" && <CityInfoCard state={hoveredState} />}
+        {hoveredState != "" && <CityInfoCard state={hoveredState} />}
       </div>
       {isMobile &&
         appData.pointsData &&

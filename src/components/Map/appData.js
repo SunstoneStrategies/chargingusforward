@@ -35,7 +35,7 @@ const appData = {
       name: "Denver",
       state: "Colorado",
       title: "Denver, CO",
-      translateProp: "translate(-60%, -60%)",
+      translateProp: "translate(-54%, -66%)",
       coordinates: [-104.9903, 39.7392], // Corrected coordinates
       description: `Coming Soon.`,
       // Note: You can only add one info between image, vimeoVideo, youtubeVideo.
