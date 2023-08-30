@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CityInfoCard from "./CityInfoCard";
+import ComingSoonCard from "./ComingSoonCard";
 import appData from "./appData";
 
 import {
@@ -111,7 +112,12 @@ export default function Map() {
               );
             })}
         </ComposableMap>
-        {hoveredState != "" && <CityInfoCard state={hoveredState} />}
+        {hoveredState !== "" &&
+          (hoveredState === "Colorado" ? (
+            <ComingSoonCard state={hoveredState} />
+          ) : (
+            <CityInfoCard state={hoveredState} />
+          ))}
       </div>
       {isMobile &&
         appData.pointsData &&
