@@ -3,6 +3,8 @@ import CityInfoCard from "./CityInfoCard";
 import ComingSoonCard from "./ComingSoonCard";
 import appData from "./appData";
 
+import mapData from "../../mapData.json";
+
 import {
   ComposableMap,
   Geographies,
@@ -10,8 +12,8 @@ import {
   Marker,
 } from "react-simple-maps";
 
-const geoUrl =
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-states/us-albers.json";
+// const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+const geoUrl = mapData;
 
 export default function Map() {
   const isMobile = document.documentElement.clientWidth <= 415;
