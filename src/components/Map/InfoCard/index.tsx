@@ -28,21 +28,19 @@ export default function InfoCard({ location }: InfoCardProps) {
             <div className="relative w-full h-full">
               <iframe
                 src={`${location.content.videoUrl}?background=0&quality=360p`}
-                className={`w-full h-full transition-opacity duration-300 ${
-                  iframeLoaded ? "opacity-100" : "opacity-0"
-                }`}
+                className="w-full h-full transition-opacity duration-300"
+                style={{ opacity: iframeLoaded ? 1 : 0 }}
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
                 title={location.content.title}
                 onLoad={() => setIframeLoaded(true)}
               />
-              {location.content.videoThumbnail && (
+              {!iframeLoaded && location.content.videoThumbnail && (
                 <img
                   src={location.content.videoThumbnail}
                   alt={location.content.title}
-                  className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-300 ${
-                    iframeLoaded ? "opacity-0" : "opacity-100"
-                  }`}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-300"
+                  style={{ opacity: iframeLoaded ? 0 : 1 }}
                   loading="eager"
                 />
               )}
