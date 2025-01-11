@@ -10,6 +10,7 @@ export interface Location {
   content?: {
     image?: string;
     videoUrl?: string;
+    videoThumbnail?: string;
     title: string;
     subtitle: string;
     learnMoreUrl: string;
@@ -28,8 +29,8 @@ export const locations: Location[] = [
     popUpCoordinates: [-105.798331, 38.099724],
     popUpLocation: "below",
     content: {
-      image: "/images/missouri.png",
       videoUrl: "https://player.vimeo.com/video/830670385",
+      videoThumbnail: "/img/kansas-city-thumbnail.png",
       title: "Kansas City, MO",
       subtitle: "Ride KC E-Bikeshare Program",
       learnMoreUrl: "https://www.chargingusforward.com/kc-ride",
@@ -42,8 +43,8 @@ export const locations: Location[] = [
     popUpCoordinates: [-89.3489, 40.4379],
     popUpLocation: "below",
     content: {
-      image: "/images/pennsylvania.png",
       videoUrl: "https://player.vimeo.com/video/842673721",
+      videoThumbnail: "/img/pittsburgh-thumbnail.png",
       title: "Pittsburgh, PA",
       subtitle: "POGOH E-Bikeshare Program",
       learnMoreUrl: "https://www.chargingusforward.com/pogoh",
@@ -56,8 +57,8 @@ export const locations: Location[] = [
     popUpCoordinates: [-116.2111, 36.99],
     popUpLocation: "below",
     content: {
-      image: "/images/colorado.png",
       videoUrl: "https://player.vimeo.com/video/911006737",
+      videoThumbnail: "/img/denver-thumbnail.png",
       title: "Denver, CO",
       subtitle: "Colorado Electric Scenic & Historic Byways",
       learnMoreUrl:
@@ -74,6 +75,7 @@ export const locations: Location[] = [
       title: "Minneapolis, MN",
       subtitle: "Minnesota Clean School Bus Programs",
       videoUrl: "https://player.vimeo.com/video/1038026387",
+      videoThumbnail: "/img/minneapolis-thumbnail.png",
       learnMoreUrl: "https://www.chargingusforward.com/minnesota-esb-programs",
     },
   },

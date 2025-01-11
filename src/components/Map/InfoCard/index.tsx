@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Location } from "../../../data/locations";
 
 interface InfoCardProps {
@@ -6,8 +6,7 @@ interface InfoCardProps {
 }
 
 export default function InfoCard({ location }: InfoCardProps) {
-  console.log("🚀 ~ location:", location);
-  // Determine if the popup should appear above or below based on popUpLocation
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const isAbove = location.popUpLocation === "above";
 
   return (
@@ -25,14 +24,29 @@ export default function InfoCard({ location }: InfoCardProps) {
 
         {/* Media Content */}
         {location.content?.videoUrl ? (
-          <div className="aspect-video w-full mb-3 rounded-lg overflow-hidden">
-            <iframe
-              src={location.content.videoUrl}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
+          <div className="aspect-video w-full mb-3 overflow-hidden">
+            <div className="relative w-full h-full">
+              <iframe
+                src={`${location.content.videoUrl}?background=0&quality=360p`}
+                className={`w-full h-full transition-opacity duration-300 ${
+                  iframeLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title={location.content.title}
+                onLoad={() => setIframeLoaded(true)}
+              />
+              {location.content.videoThumbnail && (
+                <img
+                  src={location.content.videoThumbnail}
+                  alt={location.content.title}
+                  className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-300 ${
+                    iframeLoaded ? "opacity-0" : "opacity-100"
+                  }`}
+                  loading="eager"
+                />
+              )}
+            </div>
           </div>
         ) : location.content?.image ? (
           <div className="relative w-full pb-[56.25%] mb-3 rounded-lg overflow-hidden">
