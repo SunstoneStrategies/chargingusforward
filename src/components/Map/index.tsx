@@ -33,24 +33,8 @@ export default function Map() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
     null
   );
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const mapRef = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // // Handle map click to close selected location
-  // const handleMapClick = (event: React.MouseEvent) => {
-  //   // Only close if clicking the map background, not a marker or info card
-  //   if (event.target === event.currentTarget) {
-  //     setSelectedLocation(null);
-  //   }
-  // };
-
-  // Handle escape key to close selected location
   React.useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -97,38 +81,31 @@ export default function Map() {
             />
           ))}
 
-          {locations.map((location) => {
-            const offset = getPopUpOffset(location);
-            return (
-              selectedLocation?.id === location.id && (
-                <Marker
-                  key={`infocard-${location.id}`}
-                  coordinates={location.coordinates}
-                >
-                  <foreignObject
-                    y={offset.y}
-                    x={offset.x}
-                    width={250}
-                    height={370}
-                    className="pointer-events-none"
-                    style={{ zIndex: 1000 }}
+          {selectedLocation &&
+            locations.map((location) => {
+              const offset = getPopUpOffset(location);
+              return (
+                selectedLocation?.id === location.id && (
+                  <Marker
+                    key={`infocard-${location.id}`}
+                    coordinates={location.coordinates}
                   >
-                    <InfoCard location={location} />
-                  </foreignObject>
-                </Marker>
-              )
-            );
-          })}
+                    <foreignObject
+                      y={offset.y}
+                      x={offset.x}
+                      width={250}
+                      height={370}
+                      className="pointer-events-none"
+                      style={{ zIndex: 1000 }}
+                    >
+                      <InfoCard location={location} />
+                    </foreignObject>
+                  </Marker>
+                )
+              );
+            })}
         </ComposableMap>
       </div>
-
-      {isMobile && (
-        <div className="grid grid-cols-1 gap-4 mt-4 px-4">
-          {locations.map((location) => (
-            <InfoCard key={location.id} location={location} />
-          ))}
-        </div>
-      )}
     </div>
   );
 }

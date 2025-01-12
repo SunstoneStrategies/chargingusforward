@@ -24,23 +24,27 @@ export default function InfoCard({ location }: InfoCardProps) {
 
         {/* Media Content */}
         {location.content?.videoUrl ? (
-          <div className="aspect-video w-full mb-3 overflow-hidden">
+          <div className="aspect-video w-full mb-3 overflow-hidden rounded-sm">
             <div className="relative w-full h-full">
               <iframe
-                src={`${location.content.videoUrl}?background=0&quality=360p`}
-                className="w-full h-full transition-opacity duration-300"
+                src={`${location.content.videoUrl}?background=0&quality=360p&dnt=1`}
+                className="w-full h-full transition-opacity duration-500"
                 style={{ opacity: iframeLoaded ? 1 : 0 }}
                 allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
                 title={location.content.title}
+                nonce={`${Math.random()}`}
                 onLoad={() => setIframeLoaded(true)}
               />
-              {!iframeLoaded && location.content.videoThumbnail && (
+              {location.content.videoThumbnail && (
                 <img
                   src={location.content.videoThumbnail}
                   alt={location.content.title}
-                  className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-300"
-                  style={{ opacity: iframeLoaded ? 0 : 1 }}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  style={{
+                    opacity: iframeLoaded ? 0 : 1,
+                    visibility: iframeLoaded ? "hidden" : "visible",
+                    transition: "opacity 500ms, visibility 0s 500ms",
+                  }}
                   loading="eager"
                 />
               )}
