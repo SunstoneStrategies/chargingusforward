@@ -6,32 +6,21 @@ import { Location } from "../../../data/locations";
 interface MapMarkerProps {
   location: Location;
   isSelected: boolean;
-  onSelect: (location: Location | null) => void;
   onHover: (location: Location | null) => void;
+  onHoverEnd: () => void;
 }
 
 export default function MapMarker({
   location,
   isSelected,
-  onSelect,
   onHover,
+  onHoverEnd,
 }: MapMarkerProps) {
-  const handleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onSelect(isSelected ? null : location);
-  };
-
   return (
     <Marker
       coordinates={location.coordinates}
-      onClick={handleClick}
       onMouseEnter={() => onHover(location)}
-      onMouseLeave={() => {
-        // Only close on mouse leave if it wasn't clicked (selected)
-        if (!isSelected) {
-          onHover(null);
-        }
-      }}
+      onMouseLeave={onHoverEnd}
     >
       <g
         className="cursor-pointer transform transition-transform duration-200"
