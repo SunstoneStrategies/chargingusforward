@@ -14,7 +14,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const getPopUpOffset = (location: Location) => {
   if (location.popUpLocation === "above" && location.type === "square") {
-    return { y: -310, x: -125 };
+    return { y: -366, x: -125 };
   }
   if (location.popUpLocation === "below" && location.type === "square") {
     return { y: 17, x: -125 };
@@ -33,7 +33,15 @@ export default function Map() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
     null
   );
+  const [isHoveringInfoCard, setIsHoveringInfoCard] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
+
+  const handleHoverEnd = () => {
+    // Only close if we're not hovering either element
+    if (!isHoveringInfoCard) {
+      setSelectedLocation(null);
+    }
+  };
 
   React.useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
@@ -53,8 +61,8 @@ export default function Map() {
           projection="geoAlbersUsa"
           className="w-full h-full"
           projectionConfig={{
-            scale: 900,
-            center: [-96, 38],
+            scale: 1100,
+            center: [-96, 38.5],
           }}
         >
           <Geographies geography={geoUrl}>
@@ -76,8 +84,8 @@ export default function Map() {
               key={`marker-${location.id}`}
               location={location}
               isSelected={selectedLocation?.id === location.id}
-              onSelect={setSelectedLocation}
               onHover={setSelectedLocation}
+              onHoverEnd={handleHoverEnd}
             />
           ))}
 
@@ -94,9 +102,23 @@ export default function Map() {
                       y={offset.y}
                       x={offset.x}
                       width={250}
-                      height={370}
-                      className="pointer-events-none"
-                      style={{ zIndex: 1000 }}
+                      height={location.id === "mi" ? 180 : 350}
+                      className="pointer-events-auto"
+                      style={{
+                        zIndex: 1000,
+                        borderRadius: "20px",
+                        paddingTop:
+                          location.popUpLocation === "above" ? "30px" : "0px",
+                        paddingBottom:
+                          location.popUpLocation === "above" ? "30px" : "0px",
+                        paddingLeft: "30px",
+                        paddingRight: "30px",
+                      }}
+                      onMouseEnter={() => setIsHoveringInfoCard(true)}
+                      onMouseLeave={() => {
+                        setIsHoveringInfoCard(false);
+                        handleHoverEnd();
+                      }}
                     >
                       <InfoCard location={location} />
                     </foreignObject>
