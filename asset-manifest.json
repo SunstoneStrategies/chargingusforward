@@ -1,23 +1,15 @@
 {
   "files": {
     "main.css": "./static/css/main.f1c5d8ce.css",
-    "main.js": "./static/js/main.adda98b0.js",
+    "main.js": "./static/js/main.f7bd4ab0.js",
     "static/js/453.54d94caf.chunk.js": "./static/js/453.54d94caf.chunk.js",
-    "static/media/minneapolis-thumbnail.png": "./static/media/minneapolis-thumbnail.00e1f1b8a2198a7cdee4.png",
-    "static/media/denver-thumbnail.png": "./static/media/denver-thumbnail.115f6851a35b73e1c7ff.png",
-    "static/media/issue-brief-arizona.png": "./static/media/issue-brief-arizona.ab7031c7247858167000.png",
-    "static/media/pittsburgh-thumbnail.png": "./static/media/pittsburgh-thumbnail.de2fedfafdd38b43c0c9.png",
-    "static/media/issue-brief-georgia.png": "./static/media/issue-brief-georgia.74491bd3d970bb681b96.png",
-    "static/media/issue-brief-ohio.jpg": "./static/media/issue-brief-ohio.c7560186bff53d0eb47b.jpg",
-    "static/media/kansas-city-thumbnail.png": "./static/media/kansas-city-thumbnail.d2eebea23fe7e181aa34.png",
-    "static/media/issue-brief-texas.jpg": "./static/media/issue-brief-texas.16baccee64b63c70c2ce.jpg",
     "index.html": "./index.html",
     "main.f1c5d8ce.css.map": "./static/css/main.f1c5d8ce.css.map",
-    "main.adda98b0.js.map": "./static/js/main.adda98b0.js.map",
+    "main.f7bd4ab0.js.map": "./static/js/main.f7bd4ab0.js.map",
     "453.54d94caf.chunk.js.map": "./static/js/453.54d94caf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1c5d8ce.css",
-    "static/js/main.adda98b0.js"
+    "static/js/main.f7bd4ab0.js"
   ]
 }
