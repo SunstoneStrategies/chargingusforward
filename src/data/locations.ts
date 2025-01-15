@@ -2,21 +2,16 @@ export type MarkerType = "pin" | "square";
 
 export interface Location {
   id: string;
+  type: "pin" | "square";
   coordinates: [number, number];
-  popUpLocation?: "above" | "below";
-  type: MarkerType;
-  link?: string;
-  content?: {
+  popUpLocation: "above" | "below";
+  content: {
+    title: string;
+    subtitle: string;
     image?: string;
     videoUrl?: string;
     videoThumbnail?: string;
-    title: string;
-    subtitle: string;
     learnMoreUrl?: string;
-  };
-  cardPosition?: {
-    translateX: string;
-    translateY: string;
   };
 }
 
