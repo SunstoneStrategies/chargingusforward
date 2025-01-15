@@ -23,7 +23,7 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       videoUrl: "https://player.vimeo.com/video/830670385",
-      videoThumbnail: "/img/kansas-city-thumbnail.png",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/kansas-city-thumbnail.png`,
       title: "Kansas City, MO",
       subtitle: "Ride KC E-Bikeshare Program",
       learnMoreUrl: "https://www.chargingusforward.com/kc-ride",
@@ -36,7 +36,7 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       videoUrl: "https://player.vimeo.com/video/842673721",
-      videoThumbnail: "/img/pittsburgh-thumbnail.png",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/pittsburgh-thumbnail.png`,
       title: "Pittsburgh, PA",
       subtitle: "POGOH E-Bikeshare Program",
       learnMoreUrl: "https://www.chargingusforward.com/pogoh",
@@ -49,7 +49,7 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       videoUrl: "https://player.vimeo.com/video/911006737",
-      videoThumbnail: "/img/denver-thumbnail.png",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/denver-thumbnail.png`,
       title: "Denver, CO",
       subtitle: "Colorado Electric Scenic & Historic Byways",
       learnMoreUrl:
@@ -65,7 +65,7 @@ export const locations: Location[] = [
       title: "Minneapolis, MN",
       subtitle: "Minnesota Clean School Bus Programs",
       videoUrl: "https://player.vimeo.com/video/1038026387",
-      videoThumbnail: "/img/minneapolis-thumbnail.png",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/minneapolis-thumbnail.png`,
       learnMoreUrl: "https://www.chargingusforward.com/minnesota-esb-programs",
     },
   },
@@ -75,7 +75,7 @@ export const locations: Location[] = [
     coordinates: [-97.5169, 31.7965],
     popUpLocation: "above",
     content: {
-      image: "/img/issue-brief-texas.jpg",
+      image: `${process.env.PUBLIC_URL}/img/issue-brief-texas.jpg`,
       title: "TEXAS ISSUE BRIEF",
       subtitle: "Clean Trucks",
       learnMoreUrl: "https://www.chargingusforward.com/texas-issue-brief",
@@ -87,7 +87,7 @@ export const locations: Location[] = [
     coordinates: [-84.388, 33.749],
     popUpLocation: "above",
     content: {
-      image: "/img/issue-brief-georgia.png",
+      image: `${process.env.PUBLIC_URL}/img/issue-brief-georgia.png`,
       title: "GEORGIA ISSUE BRIEF",
       subtitle: "EV Manufacturing",
       learnMoreUrl: "https://www.chargingusforward.com/georgia-issue-brief",
@@ -99,7 +99,7 @@ export const locations: Location[] = [
     coordinates: [-83.6431, 40.3676],
     popUpLocation: "below",
     content: {
-      image: "/img/issue-brief-ohio.jpg",
+      image: `${process.env.PUBLIC_URL}/img/issue-brief-ohio.jpg`,
       title: "OHIO ISSUE BRIEF",
       subtitle: "Clean Ports",
       learnMoreUrl: "https://www.chargingusforward.com/ohio-issue-brief",
@@ -113,7 +113,7 @@ export const locations: Location[] = [
     content: {
       title: "ARIZONA ISSUE BRIEF",
       subtitle: "Charging Infrastructure",
-      image: "/img/issue-brief-arizona.png",
+      image: `${process.env.PUBLIC_URL}/img/issue-brief-arizona.png`,
       learnMoreUrl: "https://www.chargingusforward.com/arizona-issue-brief",
     },
   },
