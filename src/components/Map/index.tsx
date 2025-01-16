@@ -29,6 +29,8 @@ const getPopUpOffset = (location: Location) => {
   throw new Error("Invalid popUpLocation");
 };
 
+const stateNames = locations.map((location) => location.name);
+
 export default function Map() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
     null
@@ -67,15 +69,21 @@ export default function Map() {
         >
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill="#161e44"
-                  stroke="white"
-                  strokeWidth={1}
-                />
-              ))
+              geographies.map((geo) => {
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill={
+                      stateNames.includes(geo.properties.name)
+                        ? "#808080" // highlighted state color
+                        : "#161e44" // default state color
+                    }
+                    stroke="white"
+                    strokeWidth={1}
+                  />
+                );
+              })
             }
           </Geographies>
 

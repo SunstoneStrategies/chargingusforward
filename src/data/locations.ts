@@ -3,6 +3,7 @@ export type MarkerType = "pin" | "square";
 export interface Location {
   id: string;
   type: "pin" | "square";
+  name: string;
   coordinates: [number, number];
   popUpLocation: "above" | "below";
   content: {
@@ -18,6 +19,7 @@ export interface Location {
 export const locations: Location[] = [
   {
     id: "mo",
+    name: "Missouri",
     type: "pin",
     coordinates: [-94.578331, 39.099724],
     popUpLocation: "below",
@@ -25,14 +27,15 @@ export const locations: Location[] = [
       videoUrl: "https://player.vimeo.com/video/830670385",
       videoThumbnail: `${process.env.PUBLIC_URL}/img/kansas-city-thumbnail.png`,
       title: "Kansas City, MO",
-      subtitle: "Ride KC E-Bikeshare Program",
-      learnMoreUrl: "https://www.chargingusforward.com/kc-ride",
+      subtitle: "Kansas City Streetcar",
+      learnMoreUrl: "https://www.chargingusforward.com/kansas-city-streetcar",
     },
   },
   {
     id: "pa",
     type: "pin",
-    coordinates: [-77.7489, 40.0379],
+    name: "Pennsylvania",
+    coordinates: [-79.7489, 40.8774],
     popUpLocation: "below",
     content: {
       videoUrl: "https://player.vimeo.com/video/842673721",
@@ -45,6 +48,7 @@ export const locations: Location[] = [
   {
     id: "co",
     type: "pin",
+    name: "Colorado",
     coordinates: [-105.3111, 39.113],
     popUpLocation: "below",
     content: {
@@ -57,8 +61,20 @@ export const locations: Location[] = [
     },
   },
   {
+    id: "mi",
+    type: "pin",
+    name: "Michigan",
+    coordinates: [-83.5552, 42.3314],
+    popUpLocation: "below",
+    content: {
+      title: "Detroit, MI",
+      subtitle: "Coming Soon",
+    },
+  },
+  {
     id: "mn",
-    type: "square",
+    type: "pin",
+    name: "Minnesota",
     coordinates: [-93.9993, 45.6945],
     popUpLocation: "below",
     content: {
@@ -72,6 +88,7 @@ export const locations: Location[] = [
   {
     id: "tx",
     type: "square",
+    name: "Texas",
     coordinates: [-97.5169, 31.7965],
     popUpLocation: "above",
     content: {
@@ -83,6 +100,7 @@ export const locations: Location[] = [
   },
   {
     id: "ga",
+    name: "Georgia",
     type: "square",
     coordinates: [-84.388, 33.749],
     popUpLocation: "above",
@@ -95,6 +113,7 @@ export const locations: Location[] = [
   },
   {
     id: "oh",
+    name: "Ohio",
     type: "square",
     coordinates: [-83.6431, 40.3676],
     popUpLocation: "below",
@@ -107,6 +126,7 @@ export const locations: Location[] = [
   },
   {
     id: "az",
+    name: "Arizona",
     type: "square",
     coordinates: [-111.0937, 34.0489],
     popUpLocation: "above",
@@ -115,16 +135,6 @@ export const locations: Location[] = [
       subtitle: "Charging Infrastructure",
       image: `${process.env.PUBLIC_URL}/img/issue-brief-arizona.png`,
       learnMoreUrl: "https://www.chargingusforward.com/arizona-issue-brief",
-    },
-  },
-  {
-    id: "mi",
-    type: "square",
-    coordinates: [-83.0458, 42.3314],
-    popUpLocation: "below",
-    content: {
-      title: "MICHIGAN ISSUE BRIEF",
-      subtitle: "Coming soon",
     },
   },
 ];
