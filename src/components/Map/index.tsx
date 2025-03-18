@@ -57,8 +57,8 @@ export default function Map() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto" ref={mapRef}>
-      <div className="aspect-[4/3] w-full">
+    <div className="relative w-full mx-auto px-2" ref={mapRef}>
+      <div className="aspect-[4/3] w-full p-[170px]">
         <ComposableMap
           projection="geoAlbersUsa"
           className="w-full h-full"
@@ -110,7 +110,9 @@ export default function Map() {
                       y={offset.y}
                       x={offset.x}
                       width={250}
-                      height={location.id === "mi" ? 180 : 350}
+                      height={
+                        location.id === "wa" || location.id === "ut" ? 180 : 350
+                      }
                       className="pointer-events-auto"
                       style={{
                         zIndex: 1000,

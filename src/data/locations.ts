@@ -68,7 +68,10 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       title: "Detroit, MI",
-      subtitle: "Coming Soon",
+      subtitle: "Forth’s Affordable Mobility Platform Carshare",
+      videoUrl: "https://player.vimeo.com/video/1056864205",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/detroit-thumbnail.png`,
+      learnMoreUrl: "https://www.chargingusforward.com/forths-amp",
     },
   },
   {
@@ -83,6 +86,28 @@ export const locations: Location[] = [
       videoUrl: "https://player.vimeo.com/video/1038026387",
       videoThumbnail: `${process.env.PUBLIC_URL}/img/minneapolis-thumbnail.png`,
       learnMoreUrl: "https://www.chargingusforward.com/minnesota-esb-programs",
+    },
+  },
+  {
+    id: "wa",
+    type: "pin",
+    name: "Washington",
+    coordinates: [-122.4429, 47.2529],
+    popUpLocation: "below",
+    content: {
+      title: "Tacoma, WA",
+      subtitle: "Coming Soon",
+    },
+  },
+  {
+    id: "ut",
+    type: "pin",
+    name: "Utah",
+    coordinates: [-109.5319, 38.5733],
+    popUpLocation: "below",
+    content: {
+      title: "Moab, UT",
+      subtitle: "Coming Soon",
     },
   },
   {
