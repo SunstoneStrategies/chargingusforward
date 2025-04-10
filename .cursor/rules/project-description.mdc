@@ -1,0 +1,45 @@
+---
+description: General project desciption for context when asking for changes
+globs: 
+alwaysApply: false
+---
+PROJECT CONTEXT: Interactive US Map Widget (Route Zero)
+------------------------
+PURPOSE: Visualize clean energy and EV initiatives across different US states, featuring video content and issue briefs.
+
+TECH STACK:
+- React 18 + TypeScript
+- react-simple-maps for map visualization
+- Tailwind CSS for styling
+- Deployed via GitHub Pages
+
+KEY COMPONENTS:
+1. Map (src/components/Map/index.tsx)
+   - Base US map with highlighted states
+   - Interactive markers/squares for locations
+   - Popup InfoCards for content
+
+2. InfoCard (src/components/Map/InfoCard/index.tsx)
+   - Displays videos (Vimeo) or issue brief images
+   - Fixed height images (190px)
+   - Triangular pointer above/below
+
+DESIGN SYSTEM:
+- Colors: 
+  - Base map: #161e44
+  - Highlighted states: #1e2756
+  - White accents: #FFFFFF
+- Shadows: drop-shadow(0 0 10px rgba(0, 0, 0, 0.15))
+- Rounded corners: rounded-[20px]
+
+DEPLOYMENT:
+- GitHub Pages via gh-pages package
+- Assets in public/img/ directory
+- Uses process.env.PUBLIC_URL for asset paths
+
+LOCATIONS:
+- Mix of video content (pins) and issue briefs (squares)
+- States: MI, OH, TX, AZ, GA, MN, CO, PA
+- Data managed in src/data/locations.ts
+
+

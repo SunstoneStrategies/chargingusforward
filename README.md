@@ -8,6 +8,10 @@ To add a new location, add a new object to the `locations.ts` file with the appr
 
 To deploy the project, run `npm run deploy` to build and deploy the project to the `gh-pages` branch. GitHub pages will then automatically serve the project from https://sunstonestrategies.github.io/chargingusforward/.
 
+## Preview deployment
+
+To create a preview deployment, push the branch to the [dev repository](https://github.com/sophialittlejohn/sunstonestrategies-map-widget). This will auto build the website on Vercel and will serve the website from https://sunstonestrategies-map-widget.vercel.app/.
+
 ## Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
