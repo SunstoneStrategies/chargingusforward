@@ -58,7 +58,7 @@ export default function Map() {
 
   return (
     <div className="relative w-full mx-auto px-2" ref={mapRef}>
-      <div className="aspect-[4/3] w-full p-[170px]">
+      <div className="aspect-[4/3] w-full p-[50px]">
         <ComposableMap
           projection="geoAlbersUsa"
           className="w-full h-full"
