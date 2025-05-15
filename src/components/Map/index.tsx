@@ -62,8 +62,8 @@ export default function Map() {
         <ComposableMap
           projection="geoAlbersUsa"
           className="w-full h-full"
-          width={900}
-          height={700}
+          width={850}
+          height={650}
           projectionConfig={{
             scale: 1100,
             center: [-96, 38.5],
