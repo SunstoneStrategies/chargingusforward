@@ -3,5 +3,6 @@
 }
 
 .map-container {
+  margin-bottom: 1px;
   margin-top: 80px; /* Adjust the value to increase/decrease the space */
 }
