@@ -68,7 +68,7 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       title: "Detroit, MI",
-      subtitle: "Forth’s Affordable Mobility Platform Carshare",
+      subtitle: "Forth's Affordable Mobility Platform Carshare",
       videoUrl: "https://player.vimeo.com/video/1056864205",
       videoThumbnail: `${process.env.PUBLIC_URL}/img/detroit-thumbnail.png`,
       learnMoreUrl: "https://www.chargingusforward.com/forths-amp",
@@ -96,7 +96,10 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       title: "Tacoma, WA",
-      subtitle: "Coming Soon",
+      subtitle: "Clean Freight",
+      videoUrl: "https://player.vimeo.com/video/1083671965",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/tacoma-thumbnail.png`,
+      learnMoreUrl: "https://www.chargingusforward.com/ze-freight-tacoma-wa",
     },
   },
   {
@@ -107,7 +110,25 @@ export const locations: Location[] = [
     popUpLocation: "below",
     content: {
       title: "Moab, UT",
-      subtitle: "Coming Soon",
+      subtitle: "National Electric Vehicle Infrastructure Program (NEVI)",
+      videoUrl: "https://player.vimeo.com/video/1082692710",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/moab-thumbnail.png`,
+      learnMoreUrl: "https://www.chargingusforward.com/nevi-moab-ut",
+    },
+  },
+  {
+    id: "nc",
+    type: "pin",
+    name: "North Carolina",
+    coordinates: [-78.8986, 35.994],
+    popUpLocation: "below",
+    content: {
+      title: "Durham, NC",
+      subtitle: "EV Charger Manufacturing",
+      videoUrl: "https://player.vimeo.com/video/1083671644",
+      videoThumbnail: `${process.env.PUBLIC_URL}/img/durham-thumbnail.png`,
+      learnMoreUrl:
+        "https://www.chargingusforward.com/charging-manufacturing-durham-nc",
     },
   },
   {

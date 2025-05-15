@@ -62,6 +62,8 @@ export default function Map() {
         <ComposableMap
           projection="geoAlbersUsa"
           className="w-full h-full"
+          width={900}
+          height={700}
           projectionConfig={{
             scale: 1100,
             center: [-96, 38.5],
@@ -110,9 +112,7 @@ export default function Map() {
                       y={offset.y}
                       x={offset.x}
                       width={250}
-                      height={
-                        location.id === "wa" || location.id === "ut" ? 180 : 350
-                      }
+                      height={350}
                       className="pointer-events-auto"
                       style={{
                         zIndex: 1000,
