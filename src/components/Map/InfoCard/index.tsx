@@ -1,13 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Location } from "../../../data/locations";
+import Player from "@vimeo/player";
 
 interface InfoCardProps {
   location: Location;
+  isPlaying: boolean;
+  setIsPlaying: (isPlaying: boolean) => void;
 }
 
-export default function InfoCard({ location }: InfoCardProps) {
+export default function InfoCard({
+  location,
+  isPlaying,
+  setIsPlaying,
+}: InfoCardProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const isAbove = location.popUpLocation === "above";
+
+  useEffect(() => {
+    if (
+      location.content?.videoUrl &&
+      location.content.videoUrl.includes("vimeo.com") &&
+      iframeRef.current
+    ) {
+      const player = new Player(iframeRef.current);
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+      player.on("play", handlePlay);
+      player.on("pause", handlePause);
+      // Clean up
+      return () => {
+        player.off("play", handlePlay);
+        player.off("pause", handlePause);
+        player.unload();
+      };
+    } else {
+      setIsPlaying(false);
+    }
+  }, [location.content?.videoUrl]);
 
   return (
     <div
@@ -33,6 +63,12 @@ export default function InfoCard({ location }: InfoCardProps) {
             <div className="aspect-video w-full mb-3 overflow-hidden rounded-sm">
               <div className="relative w-full h-full">
                 <iframe
+                  ref={
+                    location.content?.videoUrl &&
+                    location.content.videoUrl.includes("vimeo.com")
+                      ? iframeRef
+                      : undefined
+                  }
                   src={`${location.content.videoUrl}?background=0&quality=360p&dnt=1`}
                   className="w-full h-full transition-opacity duration-500"
                   style={{ opacity: iframeLoaded ? 1 : 0 }}

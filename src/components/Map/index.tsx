@@ -35,20 +35,47 @@ export default function Map() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(
     null
   );
-  const [isHoveringInfoCard, setIsHoveringInfoCard] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleHoverEnd = () => {
-    // Only close if we're not hovering either element
-    if (!isHoveringInfoCard) {
-      setSelectedLocation(null);
+  // Helper to clear the close timeout
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
     }
+  };
+
+  // Called when mouse enters marker or InfoCard
+  const handleHover = (location: Location) => {
+    clearHoverTimeout();
+    setSelectedLocation(location);
+  };
+
+  // Called when mouse leaves marker or InfoCard
+  const handleHoverEnd = (location: Location) => {
+    clearHoverTimeout();
+    if (isPlaying) {
+      // Don't close if video is playing
+      return;
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setSelectedLocation((current) => {
+        if (current?.id === location.id) {
+          return null;
+        }
+        return current;
+      });
+      hoverTimeoutRef.current = null;
+    }, 1500);
   };
 
   React.useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setSelectedLocation(null);
+        clearHoverTimeout();
       }
     };
 
@@ -94,8 +121,8 @@ export default function Map() {
               key={`marker-${location.id}`}
               location={location}
               isSelected={selectedLocation?.id === location.id}
-              onHover={setSelectedLocation}
-              onHoverEnd={handleHoverEnd}
+              onHover={() => handleHover(location)}
+              onHoverEnd={() => handleHoverEnd(location)}
             />
           ))}
 
@@ -124,13 +151,14 @@ export default function Map() {
                         paddingLeft: "30px",
                         paddingRight: "30px",
                       }}
-                      onMouseEnter={() => setIsHoveringInfoCard(true)}
-                      onMouseLeave={() => {
-                        setIsHoveringInfoCard(false);
-                        handleHoverEnd();
-                      }}
+                      onMouseEnter={() => handleHover(location)}
+                      onMouseLeave={() => handleHoverEnd(location)}
                     >
-                      <InfoCard location={location} />
+                      <InfoCard
+                        location={location}
+                        isPlaying={isPlaying}
+                        setIsPlaying={setIsPlaying}
+                      />
                     </foreignObject>
                   </Marker>
                 )
